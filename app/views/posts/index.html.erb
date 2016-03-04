@@ -1,0 +1,10 @@
+<h1>All the posts</h1>
+
+<% @posts.each do |post| %>
+  <div>
+    <a href=<%= post_path(post) %>><%= post.title %></a>
+    <div><%= link_to 'delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></div>
+  </div>
+<% end %>
+
+<%= link_to 'New Post', new_post_path %>

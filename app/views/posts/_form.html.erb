@@ -1,6 +1,11 @@
-<div>
-  <p><%= f.label :title %></p>
-  <p><%= f.text_field :title %></p>
-  <p><%= f.label :content %></p>
-  <p><%= f.text_field :content %></p>
-</div>
+<%= form_for(@post) do |f| %>
+  <div>
+    <p><%= f.label :title %></p>
+    <p><%= f.text_field :title %></p>
+    <p><%= f.label :content %></p>
+    <p><%= f.text_field :content %></p>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
