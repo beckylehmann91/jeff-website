@@ -1,20 +1,22 @@
 class AdminUsersController < ApplicationController
+  include PostHelper
 
   def new
-    @user = User.new
+    @user = AdminUser.new
   end
 
   def show
-    if authenticated? && session[:user_id] == User.find(params[:id]).id
-      @user = User.find(params[:id])
-    else
-      redirect_to '/posts'
-      flash[:notice] = "Looks like you aren't authorized to see that page. Sorry."
-    end
+    @user = AdminUser.find(id: 1)
+    # if authenticated? && session[:user_id] == User.find(params[:id]).id
+    #   @user = User.find(params[:id])
+    # else
+    #   redirect_to '/posts'
+    #   flash[:notice] = "Looks like you aren't authorized to see that page. Sorry."
+    # end
   end
 
   def create
-    @user = User.new(user_params)
+    @user = AdminUser.new(admin_user_params)
     if @user.save && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       redirect_to @user
@@ -26,7 +28,7 @@ class AdminUsersController < ApplicationController
 
   private
 
-    def user_params
+    def admin_user_params
       params.require(:user).permit(:password, :username)
     end
 
