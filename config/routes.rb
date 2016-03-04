@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   resources :posts
+  resources :admin_users
+
+  root 'landing#index'
+  get '/' => 'sessions#new', as: 'login'
+
 end
 
 
