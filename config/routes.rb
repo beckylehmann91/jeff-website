@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root 'landing#index'
   get '/' => 'sessions#new', as: 'login'
-
+  get '/admin_users/:id' => 'admin_users#show', as: 'about'
 end
 
 

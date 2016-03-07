@@ -6,7 +6,7 @@ class AdminUsersController < ApplicationController
   end
 
   def show
-    @user = AdminUser.find(id: 1)
+    @user = AdminUser.find(1)
     # if authenticated? && session[:user_id] == User.find(params[:id]).id
     #   @user = User.find(params[:id])
     # else
